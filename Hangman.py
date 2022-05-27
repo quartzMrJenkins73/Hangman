@@ -23,26 +23,47 @@ class WordList:
 
     def __init__(self):
         dictionary = {}
-        with open("sowpods3.txt", "r") as wordlist:
-            for line in wordlist:
+        with open("sowpods3.txt", "r") as self.word_list:
+            for line in self.word_list:
                 (key, value) = line.split()
                 dictionary[int(key)] = value
+            self.word_list = dictionary
+        print(len(self.word_list))
+
+    def __str__(self):
+        # return f'player {self.name} has %s' % [str(x) for x in self.player_hand]
+        pass
 
 class RandomWord:
 
-    def __init__(self):
-        random_index = random.randint(0, len(self.word_list))
-        self.random_word = self.word_list[random_index]
+    def __init__(self,word_list):
+        random_index = random.randint(0, len(word_list.keys()))
+        self.random_word = word_list[random_index]
         print(f"The random word is {self.random_word}")
+
+    def create_word(self,word_list):
+        pass
+
+    def __str__(self):
+        # return f'player {self.name} has %s' % [str(x) for x in self.player_hand]
+        pass
 
 class GamePlay:
 
     def __init__(self):
-        self.wordlist = WordList()
-        self.random_word = RandomWord()
+        self.word_list = WordList()
+        print(len(self.word_list))
+        # self.random_word = RandomWord(self.word_list)
+        word = RandomWord(self.word_list)
+        word.create_word(self.word_list)
 
     def game_play(self):
         pass
+
+    def __str__(self):
+        # return f'player {self.name} has %s' % [str(x) for x in self.player_hand]
+        pass
+
 if __name__ == '__main__':
     play_hangman = GamePlay()
-    # play_hangman.game_play()
+    play_hangman.game_play()
