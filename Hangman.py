@@ -22,40 +22,27 @@ import random
 class WordList:
 
     def __init__(self):
-        dictionary = {}
-        with open("sowpods3.txt", "r") as self.word_list:
-            for line in self.word_list:
-                (key, value) = line.split()
-                dictionary[int(key)] = value
-            self.word_list = dictionary
-        print(len(self.word_list))
+        self.wordarray = []
+        with open("sowpods.txt", "r") as self.word_file:
+            for line in self.word_file:
+                self.wordarray.append(line)
 
-    def __str__(self):
-        # return f'player {self.name} has %s' % [str(x) for x in self.player_hand]
-        pass
-
-class RandomWord:
-
-    def __init__(self,word_list):
-        random_index = random.randint(0, len(word_list.keys()))
-        self.random_word = word_list[random_index]
+    def RandomWord(self):
+        self.random_word = random.choice(self.wordarray)
         print(f"The random word is {self.random_word}")
-
-    def create_word(self,word_list):
-        pass
+        return self.random_word
 
     def __str__(self):
         # return f'player {self.name} has %s' % [str(x) for x in self.player_hand]
         pass
+
 
 class GamePlay:
 
     def __init__(self):
         self.word_list = WordList()
-        print(len(self.word_list))
-        # self.random_word = RandomWord(self.word_list)
-        word = RandomWord(self.word_list)
-        word.create_word(self.word_list)
+        print(self.word_list.RandomWord())
+        print(self.word_list.RandomWord())
 
     def game_play(self):
         pass
