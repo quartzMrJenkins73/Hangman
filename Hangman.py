@@ -32,6 +32,12 @@ class WordListHandler:
         print(f"The random word is {self.random_word}")
         return self.random_word
 
+class RandomWordHandler:
+    def getRandomWord(self, word_array):
+        random_word = random.choice(word_array)
+        print(f"The random word is {random_word}")
+        return random_word
+
 
 class GamePlay:
 
@@ -39,7 +45,8 @@ class GamePlay:
         self.word_list_handler = WordListHandler()
         print(self.word_list_handler.getRandomWord())
 
-        print(self.word_list_handler.getRandomWord())
+        self.random_word_handler = RandomWordHandler()
+        print(self.random_word_handler.getRandomWord(self.word_list_handler.word_array))
 
     def game_play(self):
         pass
