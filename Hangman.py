@@ -19,37 +19,31 @@ function.
 
 import random
 
-class WordList:
+class WordListHandler:
 
     def __init__(self):
-        self.wordarray = []
+        self.word_array = []
         with open("sowpods.txt", "r") as self.word_file:
             for line in self.word_file:
-                self.wordarray.append(line)
+                self.word_array.append(line.rstrip())
 
-    def RandomWord(self):
-        self.random_word = random.choice(self.wordarray)
+    def getRandomWord(self):
+        self.random_word = random.choice(self.word_array)
         print(f"The random word is {self.random_word}")
         return self.random_word
-
-    def __str__(self):
-        # return f'player {self.name} has %s' % [str(x) for x in self.player_hand]
-        pass
 
 
 class GamePlay:
 
     def __init__(self):
-        self.word_list = WordList()
-        print(self.word_list.RandomWord())
-        print(self.word_list.RandomWord())
+        self.word_list_handler = WordListHandler()
+        print(self.word_list_handler.getRandomWord())
+
+        print(self.word_list_handler.getRandomWord())
 
     def game_play(self):
         pass
 
-    def __str__(self):
-        # return f'player {self.name} has %s' % [str(x) for x in self.player_hand]
-        pass
 
 if __name__ == '__main__':
     play_hangman = GamePlay()
